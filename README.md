@@ -55,17 +55,17 @@
 
 2.1 Пример команды резервирования данных и восстановления БД. Дополнительные флаги позволят более качественно и быстро восстановить базу. Например удалять имеющиеся значения перед восстановлением (--clean) и использовать парралельное восстановление (-j).
 - Резервное копирование:
-  - pg_dump -h db.example.com -U backup_user -F c -f /backups/mydb.dump mydb
+  - ```pg_dump -h db.example.com -U backup_user -F c -f /backups/mydb.dump mydb```
  
 - Восстановление:
-  - createdb -h db.example.com -U postgres mydb_restored
-  - pg_restore -h db.example.com -U postgres -d mydb_restored --clean --if-exists -j 4 /backups/mydb.dump
+  - ```createdb -h db.example.com -U postgres mydb_restored```
+  - ```pg_restore -h db.example.com -U postgres -d mydb_restored --clean --if-exists -j 4 /backups/mydb.dump```
 
 2.2 Да, процесс можно автоматизировать, например с помощью cron и shell-скрипта. 
 
 - ~/.pgpass для безопасной аутентификации:
-  - echo "db.example.com:5432:mydb:backup_user:SuperSecret" >> ~/.pgpass
-  - chmod 600 ~/.pgpass
+  - ```echo "db.example.com:5432:mydb:backup_user:SuperSecret" >> ~/.pgpass```
+  - ```chmod 600 ~/.pgpass```
     
 Скрипт /usr/local/bin/pgdump_daily.sh:
 
